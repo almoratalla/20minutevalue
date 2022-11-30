@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+            integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="styles/index.css" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+            integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+            crossorigin="anonymous"
+            defer
+        >
+        </script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="scripts/index.js" defer></script>
+        <title>Coconnect Chat App</title>
+    </head>
+    <body>
+        <div class="app-container container d-flex flex-column">
+            <header
+                class="d-flex flex-wrap justify-content-center py-3 px-4 mt-4 justify-content-between align-items-center bg-brand container"
+            >
+                <a
+                    href=""
+                    class="d-flex align-items-center mb-md-0 me-md-auto text-dark text-decoration-none align-items-center gap-2 flex-grow-1"
+                >
+                    <svg
+                        width="25"
+                        height="25"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="mb-1"
+                    >
+                        <g clip-path="url(#clip0_113_2)">
+                            <path
+                                d="M7.5 5C7.10218 5 6.72064 5.15804 6.43934 5.43934C6.15804 5.72064 6 6.10218 6 6.5C6 6.89782 6.15804 7.27936 6.43934 7.56066C6.72064 7.84196 7.10218 8 7.5 8C7.89782 8 8.27936 7.84196 8.56066 7.56066C8.84196 7.27936 9 6.89782 9 6.5C9 6.10218 8.84196 5.72064 8.56066 5.43934C8.27936 5.15804 7.89782 5 7.5 5V5Z"
+                                fill="white"
+                            />
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M9 2H8V0H7V2H6C4.4087 2 2.88258 2.63214 1.75736 3.75736C0.632141 4.88258 0 6.4087 0 8C0 9.5913 0.632141 11.1174 1.75736 12.2426C2.88258 13.3679 4.4087 14 6 14H9C9.13 14 9.26 13.996 9.389 13.987L13.379 14.985C13.4627 15.0058 13.5504 15.0047 13.6335 14.9816C13.7166 14.9585 13.7924 14.9144 13.8534 14.8534C13.9144 14.7924 13.9585 14.7166 13.9816 14.6335C14.0047 14.5504 14.0058 14.4627 13.985 14.379L13.408 12.07C14.1991 11.2131 14.7233 10.1442 14.9166 8.99405C15.1098 7.8439 14.9636 6.66238 14.4959 5.594C14.0283 4.52562 13.2594 3.61669 12.2833 2.97839C11.3072 2.34009 10.1663 2.0001 9 2V2ZM5 6.5C5 5.83696 5.26339 5.20107 5.73223 4.73223C6.20107 4.26339 6.83696 4 7.5 4C8.16304 4 8.79893 4.26339 9.26777 4.73223C9.73661 5.20107 10 5.83696 10 6.5C10 7.16304 9.73661 7.79893 9.26777 8.26777C8.79893 8.73661 8.16304 9 7.5 9C6.83696 9 6.20107 8.73661 5.73223 8.26777C5.26339 7.79893 5 7.16304 5 6.5ZM7.5 12C6.4772 12.0015 5.48462 11.6533 4.687 11.013L5.313 10.233C5.912 10.713 6.672 11 7.5 11C8.328 11 9.088 10.713 9.687 10.233L10.313 11.013C9.51538 11.6533 8.5228 12.0015 7.5 12V12Z"
+                                fill="white"
+                            />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_113_2">
+                                <rect width="15" height="15" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <span class="fs-4 text-white">Coconnect</span>
+                </a>
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item bg-brand-secondary rounded">
+                        <a href="/" id="leave-btn" class="nav-link text-white">Leave Room</a>
+                    </li>
+                </ul>
+            </header>
+            <main class="chat-main">
+                <div class="chat-sidebar">
+                    <h2 class="fs-5"><i class="fas fa-comments me-2"></i> Room Name:</h3>
+                    <h3 id="room-name" class="fs-6">JavaScript</h2>
+                    <h2  class="fs-5"><i class="fas fa-users me-2"></i> Users</h3>
+                    <ul id="users">
+                    </ul>
+                </div>
+                <div class="chat-messages">
+                </div>
+            </main>
+            <div class="chat-form-container">
+                <form id="chat-form" class="d-flex">
+                    <input
+                        id="msg"
+                        type="text"
+                        placeholder="Enter Message"
+                        required
+                        autocomplete="off"
+                        class="px-4"
+                    />
+                    <button class="btn text-white ms-4">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
